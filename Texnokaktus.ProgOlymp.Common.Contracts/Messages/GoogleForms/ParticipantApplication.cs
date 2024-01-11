@@ -2,7 +2,8 @@
 
 public record ParticipantApplication
 {
-    public required DateTime SubmittedTime { get; set; }
+    public required int ContestStageId { get; init; }
+    public required DateTime SubmittedTime { get; init; }
     public required string ContestLocation { get; init; }
     public required string YandexIdLogin { get; init; }
     public required string ParticipantName { get; init; }

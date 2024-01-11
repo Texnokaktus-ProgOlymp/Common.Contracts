@@ -8,7 +8,7 @@ public record ParticipantApplication
     public required string ParticipantName { get; init; }
     public required DateOnly BirthDate { get; init; }
     public required string ParticipantGrade { get; init; }
-    public required string? ParticipantEmail { get; init; }
+    public required string ParticipantEmail { get; init; }
     public required string School { get; init; }
     public required string SchoolRegion { get; init; }
     public required string ParentName { get; init; }

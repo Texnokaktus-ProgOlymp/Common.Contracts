@@ -2,6 +2,7 @@
 
 public record ParticipantApplication
 {
+    public required int ApplicationId { get; init; }
     public required int ContestStageId { get; init; }
     public required DateTime SubmittedTime { get; init; }
     public required string AgeCategory { get; init; }

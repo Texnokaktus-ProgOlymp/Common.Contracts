@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Protobuf Include="Protos\YandexContest\YandexContestService.proto" ProtoRoot="Protos" />
+    </ItemGroup>
+
 </Project>

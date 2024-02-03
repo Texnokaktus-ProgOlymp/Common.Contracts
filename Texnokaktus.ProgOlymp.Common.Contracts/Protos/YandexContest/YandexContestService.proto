@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+service YandexContestService {
+    rpc RegisterParticipant(RegisterParticipantRequest) returns (RegisterParticipantResponse);
+    rpc UnregisterParticipant(UnregisterParticipantRequest) returns (UnregisterParticipantResponse);
+}
+
+message RegisterParticipantRequest {
+    int32 contestStageId = 1;
+    string yandexIdLogin = 2;
+    
+}
+
+message RegisterParticipantResponse {
+    Error error = 1;
+}
+
+message UnregisterParticipantRequest {
+    int32 contestStageId = 1;
+    string yandexIdLogin = 2;
+}
+
+message UnregisterParticipantResponse {
+    Error error = 1;
+}
+
+message Error {
+    ErrorType type = 1;
+    string message = 2;
+}
+
+enum ErrorType {
+    GENERIC = 0;
+    CONTEST_STAGE_NOT_EXISTS = 1;
+    YANDEX_CONTEST_ID_NOT_SET = 2;
+    USER_ALREADY_REGISTERED = 3;
+    INVALID_USER = 4;
+}

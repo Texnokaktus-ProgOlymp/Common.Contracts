@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Protobuf Include="Protos\YandexContest\YandexContestService.proto" ProtoRoot="Protos" />
+      <Protobuf Include="Protos\YandexContest\RegistrationService.proto" ProtoRoot="Protos" />
     </ItemGroup>
 
 </Project>

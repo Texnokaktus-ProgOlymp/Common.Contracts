@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
-service YandexContestService {
+service RegistrationService {
     rpc RegisterParticipant(RegisterParticipantRequest) returns (RegisterParticipantResponse);
     rpc UnregisterParticipant(UnregisterParticipantRequest) returns (UnregisterParticipantResponse);
 }

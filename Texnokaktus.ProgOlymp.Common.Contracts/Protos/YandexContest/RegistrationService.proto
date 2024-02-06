@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
+import "google/protobuf/wrappers.proto";
+
 service RegistrationService {
     rpc RegisterParticipant(RegisterParticipantRequest) returns (RegisterParticipantResponse);
     rpc UnregisterParticipant(UnregisterParticipantRequest) returns (UnregisterParticipantResponse);
@@ -14,7 +16,8 @@ message RegisterParticipantRequest {
 }
 
 message RegisterParticipantResponse {
-    Error error = 1;
+    google.protobuf.StringValue contestUrl = 1;
+    Error error = 2;
 }
 
 message UnregisterParticipantRequest {

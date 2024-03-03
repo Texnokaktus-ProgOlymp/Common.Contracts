@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/duration.proto";
+
+service ContestDataService {
+    rpc GetProblems(GetProblemsRequest) returns (GetProblemsResponse);
+    rpc GetStandings(GetStandingsRequest) returns (GetStandingsResponse);
+}
+
+message GetProblemsRequest {
+    int64 contestId = 1;
+}
+
+message GetProblemsResponse {
+    repeated ContestProblem problems = 1;
+}
+
+message GetStandingsRequest {
+    int64 contestId = 1;
+    int32 pageIndex = 2;
+    int32 pageSize = 3;
+}
+
+message GetStandingsResponse {
+    ContestStandings result = 1;
+}
+
+message ContestProblem {
+    string alias = 1;
+    repeated string compilers = 2;
+    string id = 3;
+    repeated CompilerLimit limits = 4;
+    string name = 5;
+    string problemType = 6;
+    repeated Statement statements = 7;
+    int32 testCount = 8;
+}
+
+message CompilerLimit {
+    string compilerName = 1;
+    int64 idlenessLimit = 2;
+    int64 memoryLimit = 3;
+    int64 outputLimit = 4;
+    int64 timeLimit = 5;
+}
+
+message Statement {
+    string locale = 1;
+    string path = 2;
+    StatementType type = 3;
+}
+
+message ContestStandings {
+    repeated ContestStandingRow rows = 1;
+    ContestStatistics statistics = 2;
+    repeated ContestStandingsTitle titles = 3;
+}
+
+message ContestStandingRow {
+    ParticipantInfo participantInfo = 1;
+    repeated int32 placeFrom = 2;
+    repeated int32 placeTo = 3;
+    repeated ProblemResult problemResults = 4;
+    google.protobuf.DoubleValue score = 5;
+}
+
+message ContestStatistics {
+    SubmitInfo lastSubmit = 1;
+    SubmitInfo lastSuccess = 2;
+}
+
+message ContestStandingsTitle {
+    string name = 1;
+    string title = 2;
+}
+
+message ParticipantInfo {
+    int64 id = 1;
+    string login = 2;
+    string name = 3;
+    google.protobuf.StringValue startTime = 4;
+    google.protobuf.StringValue uid = 5;
+}
+
+message ProblemResult {
+    google.protobuf.DoubleValue score = 1;
+    SubmissionStatus status = 2;
+    int32 submissionCount = 3;
+    google.protobuf.Duration submitDelay = 4;
+}
+
+message SubmitInfo {
+    int64 participantId = 1;
+    string participantName = 2;
+    string problemTitle = 3;
+    google.protobuf.Duration submitTime = 4;
+}
+
+enum StatementType {
+    TEX = 0;
+    PDF = 1;
+    BINARY = 3;
+    OLYMP = 4;
+    MARKDOWN = 5;
+}
+
+enum SubmissionStatus {
+    OTHER = 0;
+    ACCEPTED = 1;
+    NOT_ACCEPTED = 2;
+    NOT_SUBMITTED = 3;
+}

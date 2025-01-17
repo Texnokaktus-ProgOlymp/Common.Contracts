@@ -22,6 +22,7 @@ message GetStandingsRequest {
     int64 contestId = 1;
     int32 pageIndex = 2;
     int32 pageSize = 3;
+    google.protobuf.StringValue participantSearch = 4;
 }
 
 message GetStandingsResponse {

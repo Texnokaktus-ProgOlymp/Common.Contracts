@@ -32,7 +32,7 @@ message GetStandingsResponse {
 }
 
 message ParticipantStatusRequest {
-    int64 contestId = 1;
+    int32 contestId = 1;
     string participantLogin = 2;
 }
 

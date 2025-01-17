@@ -4,10 +4,12 @@ option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexCon
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 
 service ContestDataService {
     rpc GetProblems(GetProblemsRequest) returns (GetProblemsResponse);
     rpc GetStandings(GetStandingsRequest) returns (GetStandingsResponse);
+    rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
 }
 
 message GetProblemsRequest {
@@ -27,6 +29,15 @@ message GetStandingsRequest {
 
 message GetStandingsResponse {
     ContestStandings result = 1;
+}
+
+message ParticipantStatusRequest {
+    int64 contestId = 1;
+    string participantLogin = 2;
+}
+
+message ParticipantStatusResponse {
+    ParticipantStatus result = 1;
 }
 
 message ContestProblem {
@@ -113,4 +124,18 @@ enum SubmissionStatus {
     ACCEPTED = 1;
     NOT_ACCEPTED = 2;
     NOT_SUBMITTED = 3;
+}
+
+message ParticipantStatus {
+    string name = 1;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp finishTime = 3;
+    int64 leftTimeMilliseconds = 4;
+    ParticipationState state = 5;
+}
+
+enum ParticipationState {
+    NOT_STARTED = 0;
+    IN_PROGRESS = 1;
+    FINISHED = 2;
 }

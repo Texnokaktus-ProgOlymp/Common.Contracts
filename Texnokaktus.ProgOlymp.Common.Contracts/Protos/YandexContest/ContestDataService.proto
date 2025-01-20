@@ -7,9 +7,18 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 service ContestDataService {
+    rpc GetContest(GetContestRequest) returns (GetContestResponse);
     rpc GetProblems(GetProblemsRequest) returns (GetProblemsResponse);
     rpc GetStandings(GetStandingsRequest) returns (GetStandingsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
+}
+
+message GetContestRequest {
+    int32 contestId = 1;
+}
+
+message GetContestResponse {
+    ContestDescription Result = 1;
 }
 
 message GetProblemsRequest {
@@ -38,6 +47,15 @@ message ParticipantStatusRequest {
 
 message ParticipantStatusResponse {
     ParticipantStatus result = 1;
+}
+
+message ContestDescription {
+    string name = 1;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Duration duration = 3;
+    google.protobuf.Duration freezeTime = 4;
+    ContestType type = 5;
+    UpsolvingAllowance upsolvingAllowance = 6;
 }
 
 message ContestProblem {
@@ -138,4 +156,15 @@ enum ParticipationState {
     NOT_STARTED = 0;
     IN_PROGRESS = 1;
     FINISHED = 2;
+}
+
+enum ContestType {
+    USUAL = 0;
+    VIRTUAL = 1;
+}
+
+enum UpsolvingAllowance {
+    PROHIBITED = 0;
+    ALLOWED_AFTER_PARTICIPATION_ENDS = 1;
+    ALLOWED_AFTER_CONTEST_ENDS = 2;
 }

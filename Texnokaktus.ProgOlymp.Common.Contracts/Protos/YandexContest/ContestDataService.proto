@@ -22,7 +22,7 @@ message GetContestResponse {
 }
 
 message GetProblemsRequest {
-    int64 contestId = 1;
+    int32 contestId = 1;
 }
 
 message GetProblemsResponse {

@@ -16,8 +16,7 @@ message RegisterParticipantRequest {
 }
 
 message RegisterParticipantResponse {
-    google.protobuf.StringValue contestUrl = 1;
-    Error error = 2;
+    Error error = 1;
 }
 
 message UnregisterParticipantRequest {

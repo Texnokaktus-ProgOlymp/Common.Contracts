@@ -7,10 +7,19 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 service ContestDataService {
+    rpc GetContestUrl(GetContestUrlRequest) returns (GetContestUrlResponse);
     rpc GetContest(GetContestRequest) returns (GetContestResponse);
     rpc GetProblems(GetProblemsRequest) returns (GetProblemsResponse);
     rpc GetStandings(GetStandingsRequest) returns (GetStandingsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
+}
+
+message GetContestUrlRequest {
+    int32 contestId = 1;
+}
+
+message GetContestUrlResponse {
+    string contestUrl = 1;
 }
 
 message GetContestRequest {

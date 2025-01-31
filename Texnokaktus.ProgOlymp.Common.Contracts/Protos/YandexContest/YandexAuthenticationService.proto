@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/empty.proto";
+
+service YandexAuthenticationService {
+    rpc IsServiceAuthenticated (google.protobuf.Empty) returns (IsServiceAuthenticatedResponse);
+    rpc AuthenticateService (AuthenticateServiceRequest) returns (google.protobuf.Empty);
+}
+
+message IsServiceAuthenticatedResponse {
+    bool result = 1;
+}
+
+message AuthenticateServiceRequest {
+    string code = 1;
+}

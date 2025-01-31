@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service ContestService {
+    rpc GetAllContests (google.protobuf.Empty) returns (GetAllContestsResponse);
+    rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
+}
+
+message GetAllContestsResponse {
+    repeated Contest result = 1;
+}
+
+message AddContestRequest {
+    int32 contestId = 1;
+    int64 yandexContestId = 2;
+}
+
+message Contest {
+    int32 id = 1;
+    int64 yandexContestId = 2;
+}

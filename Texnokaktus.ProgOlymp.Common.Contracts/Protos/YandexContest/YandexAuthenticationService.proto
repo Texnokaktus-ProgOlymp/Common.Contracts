@@ -3,14 +3,24 @@ syntax = "proto3";
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 service YandexAuthenticationService {
     rpc IsServiceAuthenticated (google.protobuf.Empty) returns (IsServiceAuthenticatedResponse);
+    rpc GetOAuthUrl(GetOAuthUrlRequest) returns (GetOAuthUrlResponse);
     rpc AuthenticateService (AuthenticateServiceRequest) returns (google.protobuf.Empty);
 }
 
 message IsServiceAuthenticatedResponse {
     bool result = 1;
+}
+
+message GetOAuthUrlRequest {
+    google.protobuf.StringValue redirectUrl = 1;
+}
+
+message GetOAuthUrlResponse {
+    string result = 1;
 }
 
 message AuthenticateServiceRequest {

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexId";
+
+import "google/protobuf/wrappers.proto";
+
+service UserService {
+    rpc GetOAuthUrl (GetOAuthUrlRequest) returns (GetOAuthUrlResponse);
+    rpc AuthenticateUser (AuthenticateUserRequest) returns (AuthenticateUserResponse);
+    rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+message GetOAuthUrlRequest {
+    google.protobuf.StringValue redirectUrl = 1;
+}
+
+message GetOAuthUrlResponse {
+    string result = 1;
+}
+
+message AuthenticateUserRequest {
+    string code = 1;
+}
+
+message AuthenticateUserResponse {
+    User result = 1;
+}
+
+message GetUserRequest {
+    string login = 1;
+}
+
+message GetUserResponse {
+    User result = 1;
+}
+
+message User {
+    string login = 1;
+    google.protobuf.StringValue displayName = 2;
+    Avatar avatar = 3;
+}
+
+message Avatar {
+    google.protobuf.StringValue avatarId = 1;
+}

@@ -10,7 +10,7 @@ service RegistrationService {
 }
 
 message RegisterParticipantRequest {
-    int32 contestStageId = 1;
+    int64 contestStageId = 1;
     string yandexIdLogin = 2;
     google.protobuf.StringValue displayName = 3;
 }
@@ -20,7 +20,7 @@ message RegisterParticipantResponse {
 }
 
 message UnregisterParticipantRequest {
-    int32 contestStageId = 1;
+    int64 contestStageId = 1;
     string yandexIdLogin = 2;
 }
 

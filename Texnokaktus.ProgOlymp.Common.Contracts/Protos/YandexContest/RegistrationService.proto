@@ -2,11 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service RegistrationService {
-    rpc RegisterParticipant(RegisterParticipantRequest) returns (RegisterParticipantResponse);
-    rpc UnregisterParticipant(UnregisterParticipantRequest) returns (UnregisterParticipantResponse);
+    rpc RegisterParticipant(RegisterParticipantRequest) returns (google.protobuf.Empty);
+    rpc UnregisterParticipant(UnregisterParticipantRequest) returns (google.protobuf.Empty);
 }
 
 message RegisterParticipantRequest {
@@ -15,27 +16,7 @@ message RegisterParticipantRequest {
     google.protobuf.StringValue displayName = 3;
 }
 
-message RegisterParticipantResponse {
-    Error error = 1;
-}
-
 message UnregisterParticipantRequest {
     int64 contestStageId = 1;
     string yandexIdLogin = 2;
-}
-
-message UnregisterParticipantResponse {
-    Error error = 1;
-}
-
-message Error {
-    ErrorType type = 1;
-    string message = 2;
-}
-
-enum ErrorType {
-    GENERIC = 0;
-    USER_IS_ALREADY_REGISTERED = 3;
-    USER_IS_NOT_REGISTERED = 4;
-    INVALID_USER = 5;
 }

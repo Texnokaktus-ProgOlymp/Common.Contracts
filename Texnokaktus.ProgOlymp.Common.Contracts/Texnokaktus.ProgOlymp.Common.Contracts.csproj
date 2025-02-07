@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <Protobuf Include="Protos\ContestService\ContestService.proto" ProtoRoot="Protos" />
-      <Protobuf Include="Protos\ContestService\StateService.proto" ProtoRoot="Protos" />
+      <Protobuf Include="Protos\ContestService\RegistrationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\RegistrationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\ContestDataService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\YandexAuthenticationService.proto" ProtoRoot="Protos" />

@@ -15,7 +15,17 @@ message GetRegistrationsRequest {
 }
 
 message GetRegistrationsResponse {
-    repeated Registration result = 1;
+    ContestRegistrations result = 1;
+}
+
+message ContestRegistrations {
+
+    Contest contest = 1;
+    repeated Registration registrations = 2;
+}
+
+message Contest {
+    string name = 1;
 }
 
 message Registration {
@@ -42,7 +52,8 @@ message ParticipantData {
     bool isSnilsValid = 4;
     string email = 5;
     string school = 6;
-    int32 grade = 7;
+    string region = 7;
+    int32 grade = 8;
 }
 
 message ParentData {

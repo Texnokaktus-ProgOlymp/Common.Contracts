@@ -36,6 +36,9 @@ message Registration {
     ParentData parentData = 5;
     TeacherData teacherData = 6;
     bool personalDataConsent = 7;
+    bytes uid = 8;
+    PreliminaryParticipationResult preliminaryResult = 9;
+    FinalParticipationResult finalResult = 10;
 }
 
 message User {
@@ -73,4 +76,13 @@ message Name {
     string firstName = 1;
     string lastName = 2;
     google.protobuf.StringValue patronym = 3;
+}
+
+message PreliminaryParticipationResult {
+    google.protobuf.DoubleValue score = 1;
+    bool qualified = 2;
+}
+
+message FinalParticipationResult {
+    google.protobuf.DoubleValue score = 1;
 }

@@ -19,6 +19,7 @@
       <Protobuf Include="Protos\YandexContest\YandexAuthenticationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexId\UserService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\CompilerService.proto" ProtoRoot="Protos" />
+      <Protobuf Include="Protos\YandexContest\ParticipantService.proto" />
     </ItemGroup>
 
 </Project>

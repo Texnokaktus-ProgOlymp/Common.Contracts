@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+service ParticipantService {
+    rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
+    rpc GetParticipantStats(ParticipantStatsRequest) returns (ParticipantStatsResponse);
+}
+
+message ParticipantStatusRequest {
+    int64 contestId = 1;
+    string participantLogin = 2;
+}
+
+message ParticipantStatusResponse {
+    ParticipantStatus result = 1;
+}
+
+message ParticipantStatsRequest {
+    int64 contestId = 1;
+    string participantLogin = 2;
+}
+
+message ParticipantStatsResponse {
+    ParticipantStats result = 1;
+}
+
+message ParticipantStatus {
+    string name = 1;
+    google.protobuf.Timestamp startTime = 2;
+    google.protobuf.Timestamp finishTime = 3;
+    int64 leftTimeMilliseconds = 4;
+    ParticipationState state = 5;
+}
+
+enum ParticipationState {
+    NOT_STARTED = 0;
+    IN_PROGRESS = 1;
+    FINISHED = 2;
+}
+
+message ParticipantStats {
+    google.protobuf.Timestamp startedAt = 1;
+    google.protobuf.Timestamp firstSubmissionTime = 2;
+    repeated BriefRunReport runs = 3;
+}
+
+message BriefRunReport {
+    int64 runId = 1;
+    string problemId = 2;
+    string problemAlias = 3;
+    string compiler = 4;
+    google.protobuf.Timestamp submissionTime = 5;
+    google.protobuf.Duration timeFromStart = 6;
+    string verdict = 7;
+    int32 testNumber = 8;
+    int64 maxTimeUsage = 9;
+    int64 maxMemoryUsage = 10;
+    google.protobuf.DoubleValue score = 11;
+}

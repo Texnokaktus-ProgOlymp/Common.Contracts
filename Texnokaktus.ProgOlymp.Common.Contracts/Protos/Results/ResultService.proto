@@ -8,6 +8,7 @@ import "google/protobuf/wrappers.proto";
 service ResultService {
     rpc GetContest (GetContestRequest) returns (Contest);
     rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
+    rpc AddProblem (AddProblemRequest) returns (google.protobuf.Empty);
 }
 
 message GetContestRequest {
@@ -19,6 +20,13 @@ message AddContestRequest {
     int32 id = 1;
     ContestStage stage = 2;
     int64 stageId = 3;
+}
+
+message AddProblemRequest {
+    int32 contestId = 1;
+    ContestStage stage = 2;
+    string alias = 3;
+    string name = 4;
 }
 
 message Contest {

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Results";
+
+import "google/protobuf/wrappers.proto";
+
+service ResultService {
+    rpc GetContest (GetContestRequest) returns (Contest);
+}
+
+message GetContestRequest {
+    int32 contestId = 1;
+    ContestStage stage = 2;
+}
+
+message Contest {
+    int32 id = 1;
+    ContestStage stage = 2;
+    int64 stageId = 3;
+    repeated Problem problems = 4;
+}
+
+message Problem {
+    int32 id = 1;
+    string alias = 2;
+    string name = 3;
+}
+
+enum ContestStage {
+    PRELIMINARY = 0;
+    FINAL = 1;
+}

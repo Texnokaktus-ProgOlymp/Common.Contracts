@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Protobuf Include="Protos\Common\common.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\RegistrationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\ContestDataService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\YandexAuthenticationService.proto" ProtoRoot="Protos" />

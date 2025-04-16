@@ -4,11 +4,13 @@ option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Results";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
+import "Common/common.proto";
 
 service ResultService {
     rpc GetContest (GetContestRequest) returns (Contest);
     rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
     rpc AddProblem (AddProblemRequest) returns (google.protobuf.Empty);
+    rpc AddResult (AddResultRequest) returns (google.protobuf.Empty);
 }
 
 message GetContestRequest {
@@ -27,6 +29,14 @@ message AddProblemRequest {
     ContestStage stage = 2;
     string alias = 3;
     string name = 4;
+}
+
+message AddResultRequest {
+    int32 contestId = 1;
+    ContestStage stage = 2;
+    string alias = 3;
+    int32 participantId = 4;
+    DecimalValue baseScore = 5;
 }
 
 message Contest {

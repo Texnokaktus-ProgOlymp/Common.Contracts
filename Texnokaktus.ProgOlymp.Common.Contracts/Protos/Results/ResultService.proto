@@ -2,15 +2,23 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Results";
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service ResultService {
     rpc GetContest (GetContestRequest) returns (Contest);
+    rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
 }
 
 message GetContestRequest {
     int32 contestId = 1;
     ContestStage stage = 2;
+}
+
+message AddContestRequest {
+    int32 id = 1;
+    ContestStage stage = 2;
+    int64 stageId = 3;
 }
 
 message Contest {

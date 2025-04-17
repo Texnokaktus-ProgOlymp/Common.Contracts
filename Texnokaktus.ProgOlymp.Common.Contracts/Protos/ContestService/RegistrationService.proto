@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.ContestService";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service RegistrationService {
+    rpc GetRegistrationState (GetRegistrationStateRequest) returns (GetRegistrationStateResponse);
+    rpc RegisterUserToPreliminaryStage (RegisterUserToPreliminaryStageRequest) returns (google.protobuf.Empty);
+}
+
+message GetRegistrationStateRequest {
+    int32 contestId = 1;
+}
+
+message GetRegistrationStateResponse {
+    bool result = 1;
+}
+
+message RegisterUserToPreliminaryStageRequest {
+    int32 contestId = 1;
+    string login = 2;
+    google.protobuf.StringValue displayName = 3;
+}

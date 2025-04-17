@@ -12,10 +12,11 @@ service ContestDataService {
     rpc GetProblems(GetProblemsRequest) returns (GetProblemsResponse);
     rpc GetStandings(GetStandingsRequest) returns (GetStandingsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
+    rpc GetParticipantStats(ParticipantStatsRequest) returns (ParticipantStatsResponse);
 }
 
 message GetContestUrlRequest {
-    int32 contestId = 1;
+    int64 contestId = 1;
 }
 
 message GetContestUrlResponse {
@@ -23,7 +24,7 @@ message GetContestUrlResponse {
 }
 
 message GetContestRequest {
-    int32 contestId = 1;
+    int64 contestId = 1;
 }
 
 message GetContestResponse {
@@ -31,7 +32,7 @@ message GetContestResponse {
 }
 
 message GetProblemsRequest {
-    int32 contestId = 1;
+    int64 contestId = 1;
 }
 
 message GetProblemsResponse {
@@ -39,7 +40,7 @@ message GetProblemsResponse {
 }
 
 message GetStandingsRequest {
-    int32 contestId = 1;
+    int64 contestId = 1;
     int32 pageIndex = 2;
     int32 pageSize = 3;
     google.protobuf.StringValue participantSearch = 4;
@@ -50,12 +51,21 @@ message GetStandingsResponse {
 }
 
 message ParticipantStatusRequest {
-    int32 contestId = 1;
+    int64 contestId = 1;
     string participantLogin = 2;
 }
 
 message ParticipantStatusResponse {
     ParticipantStatus result = 1;
+}
+
+message ParticipantStatsRequest {
+    int64 contestId = 1;
+    string participantLogin = 2;
+}
+
+message ParticipantStatsResponse {
+    ParticipantStats result = 1;
 }
 
 message ContestDescription {
@@ -176,4 +186,24 @@ enum UpsolvingAllowance {
     PROHIBITED = 0;
     ALLOWED_AFTER_PARTICIPATION_ENDS = 1;
     ALLOWED_AFTER_CONTEST_ENDS = 2;
+}
+
+message ParticipantStats {
+    google.protobuf.Timestamp startedAt = 1;
+    google.protobuf.Timestamp firstSubmissionTime = 2;
+    repeated BriefRunReport runs = 3;
+}
+
+message BriefRunReport {
+    int64 runId = 1;
+    string problemId = 2;
+    string problemAlias = 3;
+    string compiler = 4;
+    google.protobuf.Timestamp submissionTime = 5;
+    google.protobuf.Duration timeFromStart = 6;
+    string verdict = 7;
+    int32 testNumber = 8;
+    int64 maxTimeUsage = 9;
+    int64 maxMemoryUsage = 10;
+    google.protobuf.DoubleValue score = 11;
 }

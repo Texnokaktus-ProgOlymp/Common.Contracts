@@ -7,7 +7,7 @@ import "google/protobuf/wrappers.proto";
 
 service YandexAuthenticationService {
     rpc IsServiceAuthenticated (google.protobuf.Empty) returns (IsServiceAuthenticatedResponse);
-    rpc GetOAuthUrl(GetOAuthUrlRequest) returns (GetOAuthUrlResponse);
+    rpc GetOAuthUrl (GetOAuthUrlRequest) returns (GetOAuthUrlResponse);
     rpc AuthenticateService (AuthenticateServiceRequest) returns (google.protobuf.Empty);
 }
 

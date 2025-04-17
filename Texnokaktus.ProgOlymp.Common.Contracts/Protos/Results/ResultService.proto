@@ -10,6 +10,7 @@ service ResultService {
     rpc GetContest (GetContestRequest) returns (Contest);
     rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
     rpc AddProblem (AddProblemRequest) returns (google.protobuf.Empty);
+    rpc GetResults (GetResultsRequest) returns (ContestResults);
     rpc AddResult (AddResultRequest) returns (google.protobuf.Empty);
 }
 
@@ -31,6 +32,11 @@ message AddProblemRequest {
     string name = 4;
 }
 
+message GetResultsRequest {
+    int32 contestId = 1;
+    ContestStage stage = 2;
+}
+
 message AddResultRequest {
     int32 contestId = 1;
     ContestStage stage = 2;
@@ -46,10 +52,31 @@ message Contest {
     repeated Problem problems = 4;
 }
 
+message ContestResults {
+    repeated Problem problems = 1;
+    repeated ResultRow rows = 2;
+}
+
 message Problem {
     int32 id = 1;
     string alias = 2;
     string name = 3;
+}
+
+message ResultRow {
+    int32 participantId = 1;
+    repeated ProblemResult results = 2;
+}
+
+message ProblemResult {
+    int32 problemId = 1;
+    ResultScore score = 2;
+}
+
+message ResultScore {
+    DecimalValue baseScore = 1;
+    DecimalValue adjustmentsSum = 2;
+    DecimalValue totalScore = 3;
 }
 
 enum ContestStage {

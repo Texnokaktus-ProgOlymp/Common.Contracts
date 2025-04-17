@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.ContestService";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service ContestService {
+    rpc GetContest (GetContestRequest) returns (GetContestResponse);
+    rpc AddContest (AddContestRequest) returns (AddContestResponse);
+}
+
+message GetContestRequest {
+    int32 contestId = 1;
+}
+
+message GetContestResponse {
+    Contest result = 1;
+}
+
+message AddContestRequest {
+    string name = 1;
+    google.protobuf.Timestamp registrationStart = 2;
+    google.protobuf.Timestamp registrationFinish = 3;
+    google.protobuf.Int64Value preliminaryStageId = 4;
+    google.protobuf.Int64Value finalStageId = 5;
+}
+
+message AddContestResponse {
+    int32 contestId = 1;
+}
+
+message Contest {
+    int32 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp registrationStart = 3;
+    google.protobuf.Timestamp registrationFinish = 4;
+    ContestStage preliminaryStage = 5;
+    ContestStage finalStage = 6;
+}
+
+message ContestStage {
+    int64 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp contestStart = 3;
+    google.protobuf.Timestamp contestFinish = 4;
+    google.protobuf.Duration duration = 5;
+}

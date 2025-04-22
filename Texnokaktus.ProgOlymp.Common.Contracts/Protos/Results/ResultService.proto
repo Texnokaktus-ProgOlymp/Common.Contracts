@@ -61,6 +61,11 @@ message Contest {
 
 message ContestResults {
     repeated Problem problems = 1;
+    repeated ResultGroup resultGroups = 2;
+}
+
+message ResultGroup {
+    string name = 1;
     repeated ResultRow rows = 2;
 }
 

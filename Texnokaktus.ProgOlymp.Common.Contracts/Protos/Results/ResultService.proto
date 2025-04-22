@@ -72,6 +72,7 @@ message ResultGroup {
 message ParticipantResults {
     repeated Problem problems = 1;
     repeated ProblemResult results = 2;
+    DecimalValue totalScore = 3;
 }
 
 message Problem {
@@ -83,6 +84,7 @@ message Problem {
 message ResultRow {
     int32 participantId = 1;
     repeated ProblemResult results = 2;
+    DecimalValue totalScore = 3;
 }
 
 message ProblemResult {

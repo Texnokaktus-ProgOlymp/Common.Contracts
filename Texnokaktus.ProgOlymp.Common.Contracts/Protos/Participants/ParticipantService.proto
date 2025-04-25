@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Participants";
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service ParticipantService {
     rpc GetContestParticipants (GetContestParticipantsRequest) returns (GetContestParticipantsResponse);
+    rpc GetParticipantId (GetParticipantIdRequest) returns (GetParticipantIdResponse);
 }
 
 message GetContestParticipantsRequest {
@@ -16,6 +16,15 @@ message GetContestParticipantsRequest {
 message GetContestParticipantsResponse {
     string contestName = 1;
     repeated ParticipantGroup participantGroups = 2;
+}
+
+message GetParticipantIdRequest {
+    int32 contestId = 1;
+    int32 userId = 2;
+}
+
+message GetParticipantIdResponse {
+    int32 participantId = 1;
 }
 
 message ParticipantGroup {

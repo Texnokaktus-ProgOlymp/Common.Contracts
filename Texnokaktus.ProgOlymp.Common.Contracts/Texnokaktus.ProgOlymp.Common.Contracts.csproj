@@ -7,17 +7,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Grpc.AspNetCore" Version="2.70.0" />
+      <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <Protobuf Include="Protos\Common\common.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\ContestService\ContestService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\ContestService\RegistrationService.proto" ProtoRoot="Protos" />
-      <Protobuf Include="Protos\Data\RegistrationDataService.proto" />
+      <Protobuf Include="Protos\Data\RegistrationDataService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\RegistrationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\ContestDataService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\YandexAuthenticationService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexId\UserService.proto" ProtoRoot="Protos" />
+      <Protobuf Include="Protos\Results\ResultService.proto" ProtoRoot="Protos" />
+      <Protobuf Include="Protos\Participants\ParticipantService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\CompilerService.proto" ProtoRoot="Protos" />
       <Protobuf Include="Protos\YandexContest\ParticipantService.proto" />
     </ItemGroup>

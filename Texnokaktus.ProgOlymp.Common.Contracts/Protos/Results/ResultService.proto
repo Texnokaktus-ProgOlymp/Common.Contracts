@@ -13,6 +13,7 @@ service ResultService {
     rpc GetResults (GetResultsRequest) returns (ContestResults);
     rpc GetResultsByParticipant (GetResultsByParticipantRequest) returns (ParticipantResults);
     rpc AddResult (AddResultRequest) returns (google.protobuf.Empty);
+    rpc AddResultAdjustment (AddResultAdjustmentRequest) returns (AddResultAdjustmentResponse);
 }
 
 message GetContestRequest {
@@ -50,6 +51,19 @@ message AddResultRequest {
     string alias = 3;
     int32 participantId = 4;
     DecimalValue baseScore = 5;
+}
+
+message AddResultAdjustmentRequest {
+    int32 contestId = 1;
+    ContestStage stage = 2;
+    string alias = 3;
+    int32 participantId = 4;
+    DecimalValue adjustment = 5;
+    google.protobuf.StringValue comment = 6;
+}
+
+message AddResultAdjustmentResponse {
+    int32 id = 1;
 }
 
 message Contest {

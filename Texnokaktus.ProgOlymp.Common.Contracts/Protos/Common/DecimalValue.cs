@@ -1,9 +1,11 @@
 // ReSharper disable once CheckNamespace
+
 namespace Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Common;
 
 public partial class DecimalValue
 {
     private const decimal NanoFactor = 1_000_000_000;
+
     public DecimalValue(long units, int nanos)
     {
         Units = units;

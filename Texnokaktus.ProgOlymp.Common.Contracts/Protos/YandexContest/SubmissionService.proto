@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "Common/common.proto";
+
+service SubmissionService {
+    rpc GetSubmissions(GetSubmissionsRequest) returns (stream Submission);
+}
+
+message GetSubmissionsRequest {
+    int64 contestStageId = 1;
+}
+
+message Submission {
+    int64 id = 1;
+    int64 authorId = 2;
+    string compiler = 3;
+    google.protobuf.Int64Value memory = 4;
+    google.protobuf.Duration time = 5;
+    string problemAlias = 6;
+    string problemId = 7;
+    google.protobuf.Timestamp submissionTime = 8;
+    google.protobuf.Duration timeFromStart = 9;
+    DecimalValue score = 10;
+    google.protobuf.Int32Value test = 11;
+    string verdict = 12;
+}

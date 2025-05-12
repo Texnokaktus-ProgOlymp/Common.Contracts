@@ -8,11 +8,17 @@ import "google/protobuf/wrappers.proto";
 import "Common/common.proto";
 
 service SubmissionService {
-    rpc GetSubmissions(GetSubmissionsRequest) returns (stream Submission);
+    rpc GetSubmissions (GetSubmissionsRequest) returns (stream Submission);
+    rpc DownloadSubmissionSource (DownloadSubmissionSourceRequest) returns (DownloadSubmissionSourceResponse);
 }
 
 message GetSubmissionsRequest {
     int64 contestStageId = 1;
+}
+
+message DownloadSubmissionSourceRequest {
+    int64 contestStageId = 1;
+    int64 submissionId = 2;
 }
 
 message Submission {
@@ -28,4 +34,8 @@ message Submission {
     DecimalValue score = 10;
     google.protobuf.Int32Value test = 11;
     string verdict = 12;
+}
+
+message DownloadSubmissionSourceResponse {
+    string fileName = 1;
 }

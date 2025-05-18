@@ -59,6 +59,7 @@ message TestLog {
 
 enum Verdict {
     UNKNOWN = 0;
+    PENDING = -1;
     OK = 1;
     WRONG_ANSWER = 2;
     TIME_LIMIT_EXCEEDED = 3;

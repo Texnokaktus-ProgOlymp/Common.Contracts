@@ -3,6 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
 import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 import "Common/common.proto";
@@ -11,6 +12,7 @@ service SubmissionService {
     rpc GetSubmissions (GetSubmissionsRequest) returns (stream Submission);
     rpc GetSubmissionFullReport (GetSubmissionFullReportRequest) returns (SubmissionFullReport);
     rpc DownloadSubmissionSource (DownloadSubmissionSourceRequest) returns (DownloadSubmissionSourceResponse);
+    rpc RejudgeSubmission (RejudgeSubmissionRequest) returns (google.protobuf.Empty);
 }
 
 message GetSubmissionsRequest {
@@ -25,6 +27,10 @@ message GetSubmissionFullReportRequest {
 message DownloadSubmissionSourceRequest {
     int64 contestStageId = 1;
     int64 submissionId = 2;
+}
+
+message RejudgeSubmissionRequest {
+    int64 submissionId = 1;
 }
 
 message Submission {

@@ -51,8 +51,8 @@ message GetStandingsResponse {
 message ContestDescription {
     string name = 1;
     google.protobuf.Timestamp startTime = 2;
-    google.protobuf.Duration duration = 3;
-    google.protobuf.Duration freezeTime = 4;
+    google.protobuf.Timestamp finishTime = 3;
+    google.protobuf.Duration duration = 4;
     ContestType type = 5;
     UpsolvingAllowance upsolvingAllowance = 6;
 }

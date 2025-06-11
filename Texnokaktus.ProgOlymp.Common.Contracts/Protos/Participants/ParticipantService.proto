@@ -10,7 +10,7 @@ service ParticipantService {
 }
 
 message GetContestParticipantsRequest {
-    int32 contestId = 1;
+    string contestName = 1;
 }
 
 message GetContestParticipantsResponse {
@@ -19,7 +19,7 @@ message GetContestParticipantsResponse {
 }
 
 message GetParticipantIdRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     int32 userId = 2;
 }
 

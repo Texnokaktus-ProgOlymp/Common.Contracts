@@ -10,7 +10,7 @@ service RegistrationDataService {
 }
 
 message GetRegistrationsRequest {
-    int32 contestId = 1;
+    string contestName = 1;
 }
 
 message GetRegistrationsResponse {

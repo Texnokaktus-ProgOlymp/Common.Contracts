@@ -2,7 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
@@ -15,6 +14,7 @@ service ParticipantService {
 message ParticipantStatusRequest {
     int64 contestId = 1;
     string participantLogin = 2;
+    int32 participantId = 3;
 }
 
 message ParticipantStatusResponse {
@@ -24,6 +24,7 @@ message ParticipantStatusResponse {
 message ParticipantStatsRequest {
     int64 contestId = 1;
     string participantLogin = 2;
+    int32 participantId = 3;
 }
 
 message ParticipantStatsResponse {

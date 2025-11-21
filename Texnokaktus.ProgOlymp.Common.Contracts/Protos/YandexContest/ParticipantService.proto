@@ -13,8 +13,7 @@ service ParticipantService {
 
 message ParticipantStatusRequest {
     int64 contestId = 1;
-    string participantLogin = 2;
-    int32 participantId = 3;
+    int32 participantId = 2;
 }
 
 message ParticipantStatusResponse {
@@ -23,8 +22,7 @@ message ParticipantStatusResponse {
 
 message ParticipantStatsRequest {
     int64 contestId = 1;
-    string participantLogin = 2;
-    int32 participantId = 3;
+    int32 participantId = 2;
 }
 
 message ParticipantStatsResponse {

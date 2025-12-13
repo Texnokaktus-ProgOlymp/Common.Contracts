@@ -21,5 +21,6 @@
     <Protobuf Include="Protos\YandexContest\CompilerService.proto" ProtoRoot="Protos" />
     <Protobuf Include="Protos\YandexContest\ParticipantService.proto" ProtoRoot="Protos" />
     <Protobuf Include="Protos\YandexContest\SubmissionService.proto" ProtoRoot="Protos" />
+    <Protobuf Include="Protos\YandexContest\common.proto" ProtoRoot="Protos" />
   </ItemGroup>
 </Project>

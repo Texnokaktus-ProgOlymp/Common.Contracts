@@ -5,6 +5,7 @@ option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexCon
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
+import "YandexContest/common.proto";
 
 service ContestDataService {
     rpc GetContestUrl(GetContestUrlRequest) returns (GetContestUrlResponse);
@@ -104,14 +105,6 @@ message ContestStatistics {
 message ContestStandingsTitle {
     string name = 1;
     string title = 2;
-}
-
-message ParticipantInfo {
-    int64 id = 1;
-    string login = 2;
-    string name = 3;
-    google.protobuf.StringValue startTime = 4;
-    google.protobuf.StringValue uid = 5;
 }
 
 message ProblemResult {

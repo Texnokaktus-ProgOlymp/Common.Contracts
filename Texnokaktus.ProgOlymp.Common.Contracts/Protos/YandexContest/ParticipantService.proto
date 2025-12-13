@@ -5,10 +5,20 @@ option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexCon
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
+import "YandexContest/common.proto";
 
 service ParticipantService {
+    rpc GetContestParticipants(ContestParticipantsRequest) returns (ContestParticipantsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
     rpc GetParticipantStats(ParticipantStatsRequest) returns (ParticipantStatsResponse);
+}
+
+message ContestParticipantsRequest {
+    int64 contestId = 1;
+}
+
+message ContestParticipantsResponse {
+    repeated ParticipantInfo result = 1;
 }
 
 message ParticipantStatusRequest {

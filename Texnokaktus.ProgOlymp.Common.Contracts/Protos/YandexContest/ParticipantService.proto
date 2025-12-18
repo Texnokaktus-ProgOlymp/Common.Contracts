@@ -8,9 +8,18 @@ import "google/protobuf/wrappers.proto";
 import "YandexContest/common.proto";
 
 service ParticipantService {
+    rpc GetContestParticipation(ContestParticipationRequest) returns (ContestParticipationResponse);
     rpc GetContestParticipants(ContestParticipantsRequest) returns (ContestParticipantsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
     rpc GetParticipantStats(ParticipantStatsRequest) returns (ParticipantStatsResponse);
+}
+
+message ContestParticipationRequest {
+    int64 contestId = 1;
+}
+
+message ContestParticipationResponse {
+    ParticipantStatus result = 1;
 }
 
 message ContestParticipantsRequest {
@@ -43,8 +52,10 @@ message ParticipantStatus {
     string name = 1;
     google.protobuf.Timestamp startTime = 2;
     google.protobuf.Timestamp finishTime = 3;
-    int64 leftTimeMilliseconds = 4;
+    google.protobuf.Duration leftTime = 4;
     ParticipationState state = 5;
+    google.protobuf.Timestamp contestStartTime = 6;
+    google.protobuf.Timestamp contestFinishTime = 7;
 }
 
 enum ParticipationState {

@@ -8,7 +8,7 @@ import "google/protobuf/wrappers.proto";
 import "YandexContest/common.proto";
 
 service ParticipantService {
-    rpc GetContestParticipation(ContestParticipationRequest) returns (ContestParticipationResponse);
+    rpc GetContestOwnerParticipation(ContestParticipationRequest) returns (ContestParticipationResponse);
     rpc GetContestParticipants(ContestParticipantsRequest) returns (ContestParticipantsResponse);
     rpc GetParticipantStatus(ParticipantStatusRequest) returns (ParticipantStatusResponse);
     rpc GetParticipantStats(ParticipantStatsRequest) returns (ParticipantStatsResponse);

@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "Common/common.proto";
+
+service SubmissionService {
+    rpc GetSubmissions (GetSubmissionsRequest) returns (stream Submission);
+    rpc GetSubmissionFullReport (GetSubmissionFullReportRequest) returns (SubmissionFullReport);
+    rpc DownloadSubmissionSource (DownloadSubmissionSourceRequest) returns (DownloadSubmissionSourceResponse);
+    rpc RejudgeSubmission (RejudgeSubmissionRequest) returns (google.protobuf.Empty);
+}
+
+message GetSubmissionsRequest {
+    int64 contestStageId = 1;
+}
+
+message GetSubmissionFullReportRequest {
+    int64 contestStageId = 1;
+    int64 submissionId = 2;
+}
+
+message DownloadSubmissionSourceRequest {
+    int64 contestStageId = 1;
+    int64 submissionId = 2;
+}
+
+message RejudgeSubmissionRequest {
+    int64 submissionId = 1;
+}
+
+message Submission {
+    int64 id = 1;
+    int64 authorId = 2;
+    string compiler = 3;
+    google.protobuf.Int64Value memory = 4;
+    google.protobuf.Duration time = 5;
+    string problemAlias = 6;
+    string problemId = 7;
+    google.protobuf.Timestamp submissionTime = 8;
+    google.protobuf.Duration timeFromStart = 9;
+    DecimalValue score = 10;
+    google.protobuf.Int32Value test = 11;
+    Verdict verdict = 12;
+}
+
+message SubmissionFullReport {
+    string ipAddress = 1;
+    repeated TestLog tests = 2;
+}
+
+message TestLog {
+    int32 sequenceNumber = 1;
+    string testName = 2;
+    int32 testSetId = 3;
+    google.protobuf.Int64Value memory = 4;
+    google.protobuf.Duration time = 5;
+    bool isSample = 6;
+    Verdict verdict = 7;
+}
+
+enum Verdict {
+    UNKNOWN = 0;
+    PENDING = -1;
+    OK = 1;
+    WRONG_ANSWER = 2;
+    TIME_LIMIT_EXCEEDED = 3;
+    MEMORY_LIMIT_EXCEEDED = 4;
+    RUNTIME_ERROR = 5;
+    SECURITY_VIOLATION = 6;
+    IDLENESS_LIMIT_EXCEEDED = 7;
+    CRASH = 8;
+    PRESENTATION_ERROR = 9;
+    OUTPUT_LIMIT_EXCEEDED = 10;
+    COMPILATION_ERROR = 11;
+    ACCEPTED_FOR_TESTING = 12;
+    MANUAL_INSPECTION = 13;
+    PRECOMPILE_CHECK_FAILED = 14;
+    IGNORED = 15;
+}
+
+message DownloadSubmissionSourceResponse {
+    string fileName = 1;
+}

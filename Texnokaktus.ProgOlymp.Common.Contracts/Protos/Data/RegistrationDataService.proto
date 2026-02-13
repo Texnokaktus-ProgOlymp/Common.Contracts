@@ -2,7 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Data";
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -11,7 +10,7 @@ service RegistrationDataService {
 }
 
 message GetRegistrationsRequest {
-    int32 contestId = 1;
+    string contestName = 1;
 }
 
 message GetRegistrationsResponse {

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service CompilerService {
+    rpc GetCompilers(google.protobuf.Empty) returns (GetCompilersResponse);
+}
+
+message GetCompilersResponse {
+    repeated PublicCompilerInfo compilers = 1;
+}
+
+message PublicCompilerInfo {
+    string id = 1;
+    string name = 2;
+    google.protobuf.StringValue style = 3;
+    bool deprecated = 4;
+}

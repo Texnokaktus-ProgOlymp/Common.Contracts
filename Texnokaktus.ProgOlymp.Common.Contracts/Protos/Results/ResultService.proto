@@ -17,36 +17,36 @@ service ResultService {
 }
 
 message GetContestRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
 }
 
 message AddContestRequest {
-    int32 id = 1;
+    string contestName = 1;
     ContestStage stage = 2;
     int64 stageId = 3;
 }
 
 message AddProblemRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
     string alias = 3;
     string name = 4;
 }
 
 message GetResultsRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
 }
 
 message GetResultsByParticipantRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
     int32 participantId = 3;
 }
 
 message AddResultRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
     string alias = 3;
     int32 participantId = 4;
@@ -54,7 +54,7 @@ message AddResultRequest {
 }
 
 message AddResultAdjustmentRequest {
-    int32 contestId = 1;
+    string contestName = 1;
     ContestStage stage = 2;
     string alias = 3;
     int32 participantId = 4;

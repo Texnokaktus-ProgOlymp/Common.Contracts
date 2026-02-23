@@ -7,7 +7,6 @@ import "google/protobuf/wrappers.proto";
 service UserService {
     rpc GetOAuthUrl (GetOAuthUrlRequest) returns (GetOAuthUrlResponse);
     rpc AuthenticateUser (AuthenticateUserRequest) returns (AuthenticateUserResponse);
-    rpc GetUser (GetUserRequest) returns (GetUserResponse);
 }
 
 message GetOAuthUrlRequest {
@@ -23,14 +22,6 @@ message AuthenticateUserRequest {
 }
 
 message AuthenticateUserResponse {
-    User result = 1;
-}
-
-message GetUserRequest {
-    string login = 1;
-}
-
-message GetUserResponse {
     User result = 1;
 }
 

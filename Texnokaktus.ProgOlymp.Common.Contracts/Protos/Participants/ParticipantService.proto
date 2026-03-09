@@ -14,7 +14,7 @@ message GetContestParticipantsRequest {
 }
 
 message GetContestParticipantsResponse {
-    string contestName = 1;
+    string contestTitle = 1;
     repeated ParticipantGroup participantGroups = 2;
 }
 

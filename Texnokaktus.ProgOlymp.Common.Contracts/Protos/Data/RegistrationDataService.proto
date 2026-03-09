@@ -24,7 +24,7 @@ message ContestRegistrations {
 }
 
 message Contest {
-    string name = 1;
+    string title = 1;
 }
 
 message Registration {

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Data";
 
+import "Common/common.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -36,8 +37,8 @@ message Registration {
     TeacherData teacherData = 6;
     bool personalDataConsent = 7;
     bytes uid = 8;
-    PreliminaryParticipationResult preliminaryResult = 9;
-    FinalParticipationResult finalResult = 10;
+    ContestParticipation preliminaryParticipation = 9;
+    ContestParticipation finalParticipation = 10;
 }
 
 message User {
@@ -77,11 +78,7 @@ message Name {
     google.protobuf.StringValue patronym = 3;
 }
 
-message PreliminaryParticipationResult {
-    google.protobuf.DoubleValue score = 1;
-    bool qualified = 2;
-}
-
-message FinalParticipationResult {
-    google.protobuf.DoubleValue score = 1;
+message ContestParticipation {
+    ParticipationState state = 1;
+    int64 yandexContestId = 2;
 }

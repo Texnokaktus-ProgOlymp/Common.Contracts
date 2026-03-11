@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.YandexContest";
 
+import "Common/common.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
@@ -56,12 +57,6 @@ message ParticipantStatus {
     ParticipationState state = 5;
     google.protobuf.Timestamp contestStartTime = 6;
     google.protobuf.Timestamp contestFinishTime = 7;
-}
-
-enum ParticipationState {
-    NOT_STARTED = 0;
-    IN_PROGRESS = 1;
-    FINISHED = 2;
 }
 
 message ParticipantStats {

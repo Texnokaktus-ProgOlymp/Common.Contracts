@@ -19,13 +19,14 @@ message GetRegistrationsResponse {
 }
 
 message ContestRegistrations {
-
     Contest contest = 1;
     repeated Registration registrations = 2;
 }
 
 message Contest {
     string title = 1;
+    google.protobuf.Int64Value preliminaryStageContestId = 2;
+    google.protobuf.Int64Value finalStageContestId = 3;
 }
 
 message Registration {

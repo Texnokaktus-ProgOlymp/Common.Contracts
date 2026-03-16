@@ -33,7 +33,7 @@ message ContestParticipantsResponse {
 
 message ParticipantStatusRequest {
     int64 contestId = 1;
-    int32 participantId = 2;
+    int32 contestParticipantId = 2;
 }
 
 message ParticipantStatusResponse {
@@ -42,7 +42,7 @@ message ParticipantStatusResponse {
 
 message ParticipantStatsRequest {
     int64 contestId = 1;
-    int32 participantId = 2;
+    int32 contestParticipantId = 2;
 }
 
 message ParticipantStatsResponse {

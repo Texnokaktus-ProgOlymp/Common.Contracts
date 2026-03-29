@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Registration";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "Common/common.proto";
+
+service RegistrationService {
+    rpc QualifyParticipants (QualifyParticipantsRequest) returns (QualifyParticipantsResponse);
+    rpc QualifyParticipantsDryRun (QualifyParticipantsRequest) returns (QualifyParticipantsResponse);
+}
+
+message QualifyParticipantsRequest {
+    string contestName = 1;
+    DecimalValue scoreThreshold = 2;
+}
+
+message QualifyParticipantsResponse {
+    repeated QualifiedParticipant result = 1;
+}
+
+message QualifiedParticipant {
+    int32 participantId = 1;
+    string participantUid = 2;
+    string login = 3;
+    string password = 4;
+}

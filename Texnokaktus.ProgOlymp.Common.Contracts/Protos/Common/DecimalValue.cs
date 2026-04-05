@@ -14,6 +14,11 @@ public partial class DecimalValue
 
     public static implicit operator decimal(DecimalValue grpcDecimal) =>
         grpcDecimal.Units + grpcDecimal.Nanos / NanoFactor;
+    
+    public static implicit operator decimal?(DecimalValue? grpcDecimal) =>
+        grpcDecimal is not null
+            ? grpcDecimal.Units + grpcDecimal.Nanos / NanoFactor
+            : null;
 
     public static implicit operator DecimalValue(decimal value)
     {

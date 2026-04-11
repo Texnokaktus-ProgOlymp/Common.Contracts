@@ -87,8 +87,9 @@ message ParticipantResults {
     repeated Problem problems = 1;
     repeated ProblemResult results = 2;
     DecimalValue totalScore = 3;
-    int32 place = 4;
+    google.protobuf.Int32Value place = 4;
     string resultGroupName = 5;
+    bool isDisqualified = 6;
 }
 
 message Problem {
@@ -101,7 +102,8 @@ message ResultRow {
     int32 participantId = 1;
     repeated ProblemResult results = 2;
     DecimalValue totalScore = 3;
-    int32 place = 4;
+    google.protobuf.Int32Value place = 4;
+    bool isDisqualified = 5;
 }
 
 message ProblemResult {

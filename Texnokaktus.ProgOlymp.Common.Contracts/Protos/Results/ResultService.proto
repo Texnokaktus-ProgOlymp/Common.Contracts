@@ -10,10 +10,13 @@ service ResultService {
     rpc GetContest (GetContestRequest) returns (Contest);
     rpc AddContest (AddContestRequest) returns (google.protobuf.Empty);
     rpc AddProblem (AddProblemRequest) returns (google.protobuf.Empty);
-    rpc GetResults (GetResultsRequest) returns (ContestResults);
-    rpc GetResultsByParticipant (GetResultsByParticipantRequest) returns (ParticipantResults);
     rpc AddResult (AddResultRequest) returns (google.protobuf.Empty);
     rpc AddResultAdjustment (AddResultAdjustmentRequest) returns (AddResultAdjustmentResponse);
+}
+
+service ResultQueryingService {
+    rpc GetResults (GetResultsRequest) returns (ContestResults);
+    rpc GetResultsByParticipant (GetResultsByParticipantRequest) returns (ParticipantResults);
 }
 
 message GetContestRequest {

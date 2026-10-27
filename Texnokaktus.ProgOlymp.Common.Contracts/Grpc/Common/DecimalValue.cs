@@ -1,5 +1,3 @@
-// ReSharper disable once CheckNamespace
-
 namespace Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Common;
 
 public partial class DecimalValue

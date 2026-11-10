@@ -16,12 +16,17 @@ fallback не вводится. При несовместимом изменен
 | Message | Поля |
 | --- | --- |
 | RunnerRegistration | `string instance_id = 1`, `string language = 2`, `string language_version = 3`, `string endpoint = 4` |
-| RunnerDiscoveryEvent | `RunnerDiscoveryEventType type = 1`, `string instance_id = 2` |
+| RunnerDiscoveryEvent | Вложенный enum `RunnerDiscoveryEventType type = 1`, `string instance_id = 2` |
 
-RunnerDiscoveryEventType: `UNSPECIFIED=0`, `REGISTERED=1`, `REMOVED=2` (в proto
+RunnerDiscoveryEvent.RunnerDiscoveryEventType: `UNSPECIFIED=0`, `REGISTERED=1`, `REMOVED=2` (в proto
 имена имеют префикс `RUNNER_DISCOVERY_EVENT_TYPE_`). Неизвестный или unspecified
 тип не считается успешной регистрацией/удалением; потребитель может перечитать
 реестр, не полагаясь на такой hint. Отдельный discovery RPC не добавляется.
+
+Enum объявлен внутри RunnerDiscoveryEvent; C# имя —
+`RunnerDiscoveryEvent.Types.RunnerDiscoveryEventType`. Перенос enum внутрь message
+не меняет номера полей, значения enum или wire bytes; прежние golden fixtures
+сохраняются.
 
 - Ключ: `progolymp:runner-discovery:v1:{environment}:instances:{instance_id}`.
 - Значение: ровно `instance_id`, `language`, `language_version`, `endpoint`.

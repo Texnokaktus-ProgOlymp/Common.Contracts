@@ -10,12 +10,12 @@ message RunnerRegistration {
 }
 
 message RunnerDiscoveryEvent {
+    enum RunnerDiscoveryEventType {
+        RUNNER_DISCOVERY_EVENT_TYPE_UNSPECIFIED = 0;
+        RUNNER_DISCOVERY_EVENT_TYPE_REGISTERED = 1;
+        RUNNER_DISCOVERY_EVENT_TYPE_REMOVED = 2;
+    }
+
     RunnerDiscoveryEventType type = 1;
     string instance_id = 2;
-}
-
-enum RunnerDiscoveryEventType {
-    RUNNER_DISCOVERY_EVENT_TYPE_UNSPECIFIED = 0;
-    RUNNER_DISCOVERY_EVENT_TYPE_REGISTERED = 1;
-    RUNNER_DISCOVERY_EVENT_TYPE_REMOVED = 2;
 }

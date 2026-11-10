@@ -1,0 +1,22 @@
+job_id: 42
+language: "cpp"
+language_version: "23"
+source { key: "source.cpp" sha256: "0123456789abcdef0123456789abcdef" }
+tests { test_id: 3 input { key: "tests/3.in" sha256: "0123456789abcdef0123456789abcdef" } }
+result_prefix: "results/job-42"
+compilation_limits {
+    cpu_time_ms: 10000
+    wall_time_ms: 20000
+    memory_bytes: 536870912
+    stdout_bytes: 1048576
+    stderr_bytes: 1048576
+    processes: 32
+}
+execution_limits {
+    cpu_time_ms: 1000
+    wall_time_ms: 2000
+    memory_bytes: 67108864
+    stdout_bytes: 1024
+    stderr_bytes: 2048
+    processes: 8
+}

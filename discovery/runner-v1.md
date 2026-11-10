@@ -27,6 +27,7 @@ Enum объявлен внутри RunnerDiscoveryEvent; C# имя —
 `RunnerDiscoveryEvent.Types.RunnerDiscoveryEventType`. Перенос enum внутрь message
 не меняет номера полей, значения enum или wire bytes; прежние golden fixtures
 сохраняются.
+Объявление вложенного enum размещается после полей родительского message.
 
 - Ключ: `progolymp:runner-discovery:v1:{environment}:instances:{instance_id}`.
 - Значение: ровно `instance_id`, `language`, `language_version`, `endpoint`.
@@ -49,7 +50,7 @@ Enum объявлен внутри RunnerDiscoveryEvent; C# имя —
 вызов, точное совпадение нормализованной строки допускает обычную обработку.
 Пустое или несовпадающее значение даёт FAILED_PRECONDITION до принятия RunJob и любого IO
 задания, в том числе при busy/drain. Работает без Redis и без публикации discovery.
-Это идентичность процесса, не аутентификация. Proto RunJob не изменён.
+Это идентичность процесса, не аутентификация. Поля и wire-format RunJob не изменены.
 
 RunnerInstanceInterceptor использует context.RequestHeaders.GetValue без
 отдельной проверки исходных HTTP-значений. Повторы учитываются только через

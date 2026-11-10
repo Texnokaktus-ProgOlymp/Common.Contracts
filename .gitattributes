@@ -1,1 +1,2 @@
 discovery/fixtures/*.pb binary
+runner/fixtures/*.pb binary

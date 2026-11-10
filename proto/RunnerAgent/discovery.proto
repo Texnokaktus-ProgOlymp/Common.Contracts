@@ -1,0 +1,21 @@
+syntax = "proto3";
+package texnokaktus.progolymp.runner.discovery.v1;
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Discovery";
+
+message RunnerRegistration {
+    string instance_id = 1;
+    string language = 2;
+    string language_version = 3;
+    string endpoint = 4;
+}
+
+message RunnerDiscoveryEvent {
+    RunnerDiscoveryEventType type = 1;
+    string instance_id = 2;
+}
+
+enum RunnerDiscoveryEventType {
+    RUNNER_DISCOVERY_EVENT_TYPE_UNSPECIFIED = 0;
+    RUNNER_DISCOVERY_EVENT_TYPE_REGISTERED = 1;
+    RUNNER_DISCOVERY_EVENT_TYPE_REMOVED = 2;
+}

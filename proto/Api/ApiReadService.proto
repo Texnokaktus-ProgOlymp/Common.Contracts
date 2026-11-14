@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package progolymp.api;
+
+option csharp_namespace = "Texnokaktus.ProgOlymp.Common.Contracts.Grpc.Api";
+
+import "google/protobuf/empty.proto";
+
+service ApiReadService {
+    rpc ListContests (google.protobuf.Empty) returns (ListContestsResponse);
+    rpc GetRegistrationSnapshot (GetRegistrationSnapshotRequest) returns (RegistrationSnapshot);
+}
+
+message ListContestsResponse {
+    repeated ContestMetadata contests = 1;
+}
+
+message GetRegistrationSnapshotRequest {
+    int32 contestId = 1;
+}
+
+// Shared by the catalog and the registration snapshot.
+message ContestMetadata {
+    int32 contestId = 1;
+    string contestName = 2;
+    string title = 3;
+    optional int64 preliminaryContestId = 4;
+    optional int64 finalContestId = 5;
+}
+
+message RegistrationSnapshot {
+    ContestMetadata contest = 1;
+    repeated Registration registrations = 2;
+
+    message Registration {
+        int32 apiApplicationId = 1;
+        int32 userId = 2;
+        int32 grade = 3;
+        string region = 4;
+        string firstName = 5;
+        string lastName = 6;
+        optional string patronymic = 7;
+        optional int64 preliminaryParticipantId = 8;
+        optional int64 finalParticipantId = 9;
+    }
+}

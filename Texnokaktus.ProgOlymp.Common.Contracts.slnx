@@ -1,3 +1,9 @@
 ﻿<Solution>
   <Project Path="Texnokaktus.ProgOlymp.Common.Contracts\Texnokaktus.ProgOlymp.Common.Contracts.csproj" Type="Classic C#" />
+  <Folder Name="/docs/">
+    <File Path="docs/api-read-contract.md" />
+  </Folder>
+  <Folder Name="/tools/">
+    <File Path="tools/VerifyApiReadContract.cs" />
+  </Folder>
 </Solution>

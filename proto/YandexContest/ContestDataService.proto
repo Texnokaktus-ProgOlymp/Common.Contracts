@@ -47,6 +47,12 @@ message GetStandingsRequest {
 
 message GetStandingsResponse {
     ContestStandings result = 1;
+    RequestedPage requestedPage = 2;
+
+    message RequestedPage {
+        int32 pageIndex = 1;
+        int32 pageSize = 2;
+    }
 }
 
 message ContestDescription {
@@ -87,6 +93,7 @@ message ContestStandings {
     repeated ContestStandingRow rows = 1;
     ContestStatistics statistics = 2;
     repeated ContestStandingsTitle titles = 3;
+    optional int64 totalEntitiesCount = 4;
 }
 
 message ContestStandingRow {
@@ -95,6 +102,7 @@ message ContestStandingRow {
     repeated int32 placeTo = 3;
     repeated ProblemResult problemResults = 4;
     google.protobuf.DoubleValue score = 5;
+    optional string scoreText = 6;
 }
 
 message ContestStatistics {
@@ -112,6 +120,7 @@ message ProblemResult {
     SubmissionStatus status = 2;
     int32 submissionCount = 3;
     google.protobuf.Duration submitDelay = 4;
+    optional string scoreText = 5;
 }
 
 message SubmitInfo {

@@ -10,6 +10,7 @@ import "Common/common.proto";
 
 service SubmissionService {
     rpc GetSubmissions (GetSubmissionsRequest) returns (stream Submission);
+    rpc GetSubmissionsPage (GetSubmissionsPageRequest) returns (GetSubmissionsPageResponse);
     rpc GetSubmissionFullReport (GetSubmissionFullReportRequest) returns (SubmissionFullReport);
     rpc DownloadSubmissionSource (DownloadSubmissionSourceRequest) returns (DownloadSubmissionSourceResponse);
     rpc RejudgeSubmission (RejudgeSubmissionRequest) returns (google.protobuf.Empty);
@@ -17,6 +18,21 @@ service SubmissionService {
 
 message GetSubmissionsRequest {
     int64 contestStageId = 1;
+}
+
+// A page is independently addressable. An empty page does not prove end-of-list.
+message GetSubmissionsPageRequest {
+    int64 contestStageId = 1;
+    int32 pageIndex = 2;
+    int32 pageSize = 3;
+}
+
+message GetSubmissionsPageResponse {
+    repeated Submission submissions = 1;
+    int32 pageIndex = 2;
+    int32 pageSize = 3;
+    // Upstream count of items in this page, not a page count or a global total.
+    optional int32 upstreamPageCount = 4;
 }
 
 message GetSubmissionFullReportRequest {
@@ -46,11 +62,53 @@ message Submission {
     DecimalValue score = 10;
     google.protobuf.Int32Value test = 11;
     Verdict verdict = 12;
+    Observation observation = 13;
+
+    // Exact source fields supplement the legacy numeric/default-valued mapping.
+    message Observation {
+        optional int64 id = 1;
+        optional int64 authorId = 2;
+        optional string scoreText = 3;
+        optional string verdictText = 4;
+        google.protobuf.Timestamp submissionTime = 5;
+        google.protobuf.Duration timeFromStart = 6;
+        string rawJson = 7;
+    }
 }
 
 message SubmissionFullReport {
     string ipAddress = 1;
     repeated TestLog tests = 2;
+    Observation observation = 3;
+
+    message Observation {
+        Identity identity = 1;
+        ProcessingState processingState = 2;
+        optional string verdictText = 3;
+        optional string finalScoreText = 4;
+        optional string preliminaryScoreText = 5;
+        google.protobuf.Timestamp submissionTime = 6;
+        google.protobuf.Duration timeFromStart = 7;
+        string rawJson = 8;
+        optional string processingStateText = 9;
+        optional string globalErrorText = 10;
+
+        // Values are observed from the report, never substituted from the request.
+        message Identity {
+            optional int64 contestId = 1;
+            optional int64 runId = 2;
+            optional int64 participantId = 3;
+            optional string problemId = 4;
+        }
+
+        enum ProcessingState {
+            UNSPECIFIED = 0;
+            WAITING = 1;
+            RUNNING = 2;
+            FINISHED = 3;
+            FAILED = 4;
+        }
+    }
 }
 
 message TestLog {

@@ -113,6 +113,7 @@ message ContestStatistics {
 message ContestStandingsTitle {
     string name = 1;
     string title = 2;
+    optional string id = 3;
 }
 
 message ProblemResult {

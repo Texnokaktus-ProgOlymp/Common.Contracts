@@ -24,6 +24,8 @@ message GetContestUrlResponse {
 
 message GetContestRequest {
     int64 contestId = 1;
+    // Skip the token owner's participation; false preserves the legacy description.
+    bool descriptionOnly = 2;
 }
 
 message GetContestResponse {
@@ -61,7 +63,7 @@ message ContestDescription {
     google.protobuf.Timestamp finishTime = 3;
     google.protobuf.Duration duration = 4;
     ContestType type = 5;
-    UpsolvingAllowance upsolvingAllowance = 6;
+    optional UpsolvingAllowance upsolvingAllowance = 6;
 }
 
 message ContestProblem {
